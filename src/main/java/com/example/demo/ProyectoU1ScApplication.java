@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.banco.modelo.CuentaBancaria;
+import com.example.demo.banco.service.IcuentaBancariaService;
 import com.example.demo.spring.CitaMedicaSB;
 import com.example.demo.spring.MedicoSB;
 import com.example.demo.spring.PacienteCancerSB;
@@ -18,16 +21,7 @@ import com.example.demo.tradicional.PacienteTerceraEdad;
 public class ProyectoU1ScApplication implements CommandLineRunner {
 
 	@Autowired
-	private CitaMedicaSB citaMedicaSB;
-	private MedicoSB medicoSB;
-	
-	
-	@Autowired
-	private PacienteCancerSB pCancer;
-	
-
-	@Autowired
-	private PacienteTerceraEdadSB pacienteTE;
+	private IcuentaBancariaService bancariaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1ScApplication.class, args);
@@ -36,19 +30,19 @@ public class ProyectoU1ScApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Spring boot");
-
-		this.pacienteTE.setCodIess("sdfsdfsdfsdf");
-		this.pacienteTE.setNombre("Edison");
-		this.pacienteTE.setTipo("Cancer");
-		this.pacienteTE.setCedula("17512421412");
-
+		CuentaBancaria cuenta1 = new CuentaBancaria();
+		cuenta1.setNumero("001");
+		cuenta1.setTipo("Ahorros");
+		cuenta1.setTitular("Francisco Chantataxi");
+		cuenta1.setSaldo(new BigDecimal(100));
+		this.bancariaService.insertar(cuenta1);
 		
-		this.pCancer.setCedula("1312312");
-		this.pCancer.setTipo("C");
-		this.pCancer.setNombre("Jose");
-		System.out.println(pCancer);
-		citaMedicaSB.agendar("12324124", LocalDateTime.of(2022, 12, 2, 8, 30),pCancer, medicoSB);
+		CuentaBancaria cuenta2 = new CuentaBancaria();
+		cuenta2.setNumero("001");
+		cuenta2.setTipo("Ahorros");
+		cuenta2.setTitular("Francisco Chantataxi");
+		cuenta2.setSaldo(new BigDecimal(10));
+		this.bancariaService.insertar(cuenta2);
 	}
 
 }
