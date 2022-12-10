@@ -2,6 +2,7 @@ package com.example.demo.banco.modelo;
 
 import java.math.BigDecimal;
 
+
 public class CuentaBancaria {
 	@Override
 	public String toString() {

@@ -68,9 +68,11 @@ public class CuentaBancariaRepositoryImpl implements IcuentaBancariaRepository {
 	public void insertar(CuentaBancaria cuentaBancaria) {
 		// TODO Auto-generated method stub
 		
+		
 		System.out.println("Se inserta la cuenta bancaria");
-		System.out.println(cuentaBancaria);
+		//System.out.println(cuentaBancaria);
 		baseCuentas.add(cuentaBancaria);
+		
 		
 	}
 
